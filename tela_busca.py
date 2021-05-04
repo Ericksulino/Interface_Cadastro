@@ -62,6 +62,9 @@ class Tela_busca(object):
         font.setPointSize(11)
         self.ResEndereco.setFont(font)
         self.ResEndereco.setObjectName("ResEndereco")
+        self.ButHome = QtWidgets.QPushButton(self.centralwidget)
+        self.ButHome.setGeometry(QtCore.QRect(470, 40, 75, 23))
+        self.ButHome.setObjectName("ButHome")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -79,6 +82,7 @@ class Tela_busca(object):
         self.ButBus.setText(_translate("MainWindow", "Buscar"))
         self.CPF_Bu.setText(_translate("MainWindow", "CPF"))
         self.ResEndereco.setText(_translate("MainWindow", "Endereço"))
+        self.ButHome.setText(_translate("MainWindow", "HOME"))
 
 if __name__ == "__main__":
     import sys
