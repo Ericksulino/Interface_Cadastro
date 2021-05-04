@@ -35,6 +35,15 @@ class Ui_Main(QtWidgets.QWidget):
         self.QtStack.addWidget(self.stack0)
         self.QtStack.addWidget(self.stack1)
         self.QtStack.addWidget(self.stack2)
+
+class Main(QMainWindow,Ui_Main):
+    def __init__(self,parent=None):
+        super(Main,self).__init(parent)
+        self.setupUi(self)
+
+        self.cad = Cadastro()
+        self.tela_inicio.BtBus.clicked.connect(self.abrirTelaCadas)
+        self.tela_inicio.BtCad,clicked.connect(self.abrirTelaBusc)
         
 
         
