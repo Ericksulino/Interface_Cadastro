@@ -26,7 +26,7 @@ class Ui_Main(QtWidgets.QWidget):
         self.tela_inicio = Tela_inicio()
         self.tela_inicio.setupUi(self.stack0)
 
-        self.tela_cadastro = Tela_busca()
+        self.tela_cadastro = Tela_cadastro()
         self.tela_cadastro.setupUi(self.stack1)
 
         self.tela_busca = Tela_busca()
@@ -43,8 +43,41 @@ class Main(QMainWindow,Ui_Main):
 
         self.cad = Cadastro()
         self.tela_inicio.BtBus.clicked.connect(self.abrirTelaCadas)
-        self.tela_inicio.BtCad,clicked.connect(self.abrirTelaBusc)
-        
+        self.tela_inicio.BtCad.clicked.connect(self.abrirTelaBusc)
+
+        self.tela_cadastro.ButCad.clicked.connect(self.botaoCadast)
+        self.tela_busca.ButBus.clicked.connect(self.botaoBusc)
+        self.tela_busca.ButHome.clicked.connect(self.abrirTelaIni)
+
+    def botaoCadast(self):
+        nome = self.tela_cadastro.InputNm.text()
+        cpf = self.tela_cadastro.InputCp.text()
+        endereco = self.tela_cadastro.InputEn.text()
+        nascimento = self.tela_cadastro.InputNa.text()
+        if not(nome == '' or cpf == '' or endereco == '' or nascimento == ''):
+            p = Pessoa(nome,endereco,cpf,nascimento)
+            if(self.cad.cadastra(p)):
+                QMessageBox.information(None,'POOII','Cadastro realizado com sucesso!')
+                self.tela_cadastro.InputNm.setText('')
+                self.tela_cadastro.InputCp.setText('')
+                self.tela_cadastro.InputEn.setText('')
+                self.tela_cadastro.InputNa.setText('')
+            else:
+                QMessageBox.information(None,'POOII','O CPF informado já se encontra cadastrado!')
+        else:
+            QMessageBox.information(None,'POOII','Todos os campos devem ser preeecidos!')
+    
+    def botaoBusc(self):
+        cpf = self.tela_busca.InputBus.text()
+        pessoa = self.cad.busca(cpf)
+        if(pessoa!=None):
+            self.tela_busca.OutNm.setText(pessoa.nome)
+            self.tela_busca.OutCp.setText(pessoa.cpf)
+            self.tela_busca.OutEn.setText(pessoa.endereco)
+            self.tela_busca.OutNa.setText(pessoa.data_nascimento)
+        else:
+            QMessageBox.information(None,'POOII','CPF não cadastrado!')
+
 
         
 
