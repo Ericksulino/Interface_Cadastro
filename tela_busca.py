@@ -79,3 +79,12 @@ class Tela_busca(object):
         self.ButBus.setText(_translate("MainWindow", "Buscar"))
         self.CPF_Bu.setText(_translate("MainWindow", "CPF"))
         self.ResEndereco.setText(_translate("MainWindow", "Endereço"))
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Tela_busca()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
