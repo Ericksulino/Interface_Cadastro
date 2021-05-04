@@ -79,3 +79,12 @@ class Tela_cadastro(object):
         self.Endereco.setText(_translate("MainWindow", "Endereço"))
         self.Nasci.setText(_translate("MainWindow", "Data de Nascimento"))
         self.ButCad.setText(_translate("MainWindow", "Cadastrar"))
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Tela_cadastro()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
