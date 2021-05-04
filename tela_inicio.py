@@ -43,3 +43,12 @@ class Tela_inicio(object):
         self.CdE.setText(_translate("MainWindow", "CONTROLE DE ESTOQUE"))
         self.BtBus.setText(_translate("MainWindow", "Buscar"))
         self.BtCad.setText(_translate("MainWindow", "Cadastrar"))
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Tela_inicio()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
