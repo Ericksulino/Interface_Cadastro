@@ -66,7 +66,9 @@ class Main(QMainWindow,Ui_Main):
                 QMessageBox.information(None,'POOII','O CPF informado já se encontra cadastrado!')
         else:
             QMessageBox.information(None,'POOII','Todos os campos devem ser preeecidos!')
-    
+        self.abrirTelaIni()
+
+
     def botaoBusc(self):
         cpf = self.tela_busca.InputBus.text()
         pessoa = self.cad.busca(cpf)
@@ -77,6 +79,15 @@ class Main(QMainWindow,Ui_Main):
             self.tela_busca.OutNa.setText(pessoa.data_nascimento)
         else:
             QMessageBox.information(None,'POOII','CPF não cadastrado!')
+
+    def abrirTelaIni(self):
+        self.QtStack.setCurrentIndex(0)
+
+    def abrirTelaCadas(self):
+        self.QtStack.setCurrentIndex(1)
+    
+    def abrirTelaBusc(self):
+        self.QtStack.setCurrentIndex(2)
 
 
         
