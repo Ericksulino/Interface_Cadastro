@@ -38,12 +38,12 @@ class Ui_Main(QtWidgets.QWidget):
 
 class Main(QMainWindow,Ui_Main):
     def __init__(self,parent=None):
-        super(Main,self).__init(parent)
+        super(Main,self).__init__(parent)
         self.setupUi(self)
 
         self.cad = Cadastro()
-        self.tela_inicio.BtBus.clicked.connect(self.abrirTelaCadas)
-        self.tela_inicio.BtCad.clicked.connect(self.abrirTelaBusc)
+        self.tela_inicio.BtBus.clicked.connect(self.abrirTelaBusc)
+        self.tela_inicio.BtCad.clicked.connect(self.abrirTelaCadas)
 
         self.tela_cadastro.ButCad.clicked.connect(self.botaoCadast)
         self.tela_busca.ButBus.clicked.connect(self.botaoBusc)
@@ -74,7 +74,6 @@ class Main(QMainWindow,Ui_Main):
         pessoa = self.cad.busca(cpf)
         if(pessoa!=None):
             self.tela_busca.OutNm.setText(pessoa.nome)
-            self.tela_busca.OutCp.setText(pessoa.cpf)
             self.tela_busca.OutEn.setText(pessoa.endereco)
             self.tela_busca.OutNa.setText(pessoa.data_nascimento)
         else:
@@ -90,6 +89,10 @@ class Main(QMainWindow,Ui_Main):
         self.QtStack.setCurrentIndex(2)
 
 
-        
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    show_main = Main()
+    sys.exit(app.exec_())
 
 
